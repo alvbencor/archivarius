@@ -1,6 +1,7 @@
 package com.alvarobenito.archivarius.entities;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -16,6 +17,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,19 +37,18 @@ public class UserEntity {
 	@Column(nullable = false, unique = true)
 	private String username;
 
+	@Column(nullable = false, unique = true)
+    private String email;
+
 	@Column(nullable = false)
 	private String password;
 
 	@Column(nullable = false)
 	private boolean enabled = true;
-	
+
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "user_rol",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "rol_id")
-    )
-    private Set<RoleEntity> roles = new HashSet<>();
+	@JoinTable(name = "user_rol", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
+	private Set<RoleEntity> roles = new HashSet<>();
 
 
 }
