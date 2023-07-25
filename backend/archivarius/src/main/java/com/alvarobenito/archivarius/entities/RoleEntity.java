@@ -1,13 +1,25 @@
 package com.alvarobenito.archivarius.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "rol")
 public class RoleEntity {
@@ -19,32 +31,7 @@ public class RoleEntity {
     @Column(nullable = false, unique = true)
     private String name;
     
-    public RoleEntity() {
-    	
-    }
-
-	public RoleEntity(Long id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-    
-    
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+    private Set<UserEntity> users = new HashSet<>();
 
 }
