@@ -34,4 +34,5 @@ public class RoleEntity {
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
     private Set<UserEntity> users = new HashSet<>();
 
+
 }

@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +41,7 @@ public class UserEntity {
 	private String username;
 
 	@Column(nullable = false, unique = true)
-    private String email;
+	private String email;
 
 	@Column(nullable = false)
 	private String password;
@@ -46,9 +49,9 @@ public class UserEntity {
 	@Column(nullable = false)
 	private boolean enabled = true;
 
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_rol", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
 	private Set<RoleEntity> roles = new HashSet<>();
-
 
 }
