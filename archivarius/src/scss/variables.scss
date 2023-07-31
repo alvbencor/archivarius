@@ -2,3 +2,32 @@
 
 $primary-color: #2c3e50;
 $secondary-color: #42b983;
+
+$color-negro:rgb(30, 30, 30);
+$color-blanco:rgb(240, 240, 240);
+
+$color-caqui-claro: rgb(149, 169, 149);
+$color-caqui: #67796c;
+$color-lima:#c6ca19;
+$color-coral:#d84c53;
+$color-melocoton: #e59462;
+$color-teja: #a44f52;
+$color-rosa: #d9a0c6;
+$color-blue: #617892;
+$color-blue-cobalt:#264282;
+$color-lavanda: #b1a7cd;
+$color-marron: #855133;
+
+$colors: (
+  color-caqui-claro: rgb(149, 169, 149),
+  color-caqui: #67796c,
+  color-lima: #c6ca19,
+  color-coral: #d84c53,
+  color-melocoton: #e59462,
+  color-teja: #a44f52,
+  color-rosa: #d9a0c6,
+  color-blue: #617892,
+  color-blue-cobalt: #264282,
+  color-lavanda: #b1a7cd,
+  color-marron: #855133
+);
