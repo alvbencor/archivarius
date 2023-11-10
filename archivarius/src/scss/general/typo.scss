@@ -1,0 +1,28 @@
+/* Typography */
+
+hr {
+    border: 3px solid $color-caqui-claro;
+    opacity: 0.1;
+}
+
+h1{
+    color: $color-caqui-claro;
+    font-size: 3rem;
+}
+
+h2{
+    color: $color-caqui-claro;
+    opacity: .5;
+    border-left: 1px solid $color-caqui-claro;
+    padding-left: 1rem;
+}
+
+a {
+    font-weight: bold;
+    color: $primary-color;
+    
+
+    &.router-link-exact-active {
+      color: $secondary-color;
+    }
+  }

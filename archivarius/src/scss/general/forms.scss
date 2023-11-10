@@ -1,5 +1,54 @@
-/* Forms */
+/* Form Styles */
 
-form{
-    background-color: aqua;
-}
+
+.form-login {
+    width: 100%;
+
+
+    label{
+      font-weight: bold;
+      font-size: 1.5rem;
+      
+   
+  
+    
+
+    input{
+      border-radius: .2rem;
+      border: 1px solid $color-caqui-claro;
+      width: 100%;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      
+      ::placeholder{
+        text-align: center;
+      }
+
+      
+      
+    }
+
+    }
+
+    
+
+    .botonesLogin{
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      button{
+        padding: 1rem;
+        margin-top: 1.5rem;
+        border-radius: .2rem;
+        border: 1px solid $color-caqui-claro;
+  
+        
+      }
+
+    }
+  }
