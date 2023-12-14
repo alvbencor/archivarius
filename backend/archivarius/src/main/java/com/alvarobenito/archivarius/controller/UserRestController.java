@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ import com.alvarobenito.archivarius.utils.EnumRole;
 public class UserRestController {
 	
 	@Autowired UserService userService;
-	@Autowired RoleService RoleService;
+	@Autowired RoleService roleService;
 	
 	@PostMapping("/create")
 	public ResponseEntity<String> createUser(@RequestBody UserEntity createUserRequest) {
@@ -43,6 +44,20 @@ public class UserRestController {
 
 	        System.out.println("Nuevo usuario: " + newUser);
 
+	        if (createUserRequest.getRoles() == null || createUserRequest.getRoles().isEmpty()) {
+	            RoleEntity defaultRole = roleService.findByName(EnumRole.ROLE_USER);
+
+	            if (defaultRole == null) {
+	                throw new RuntimeException("El rol ROLE_USER no está configurado en la base de datos.");
+	            }
+
+	            newUser.setRoles(Collections.singleton(defaultRole));
+	        } else {
+	            Set<RoleEntity> roles = createUserRequest.getRoles().stream()
+	                    .map(role -> new RoleEntity(role.getName()))
+	                    .collect(Collectors.toSet());
+	            newUser.setRoles(roles);
+	        }
 	        userService.saveUser(newUser);
 
 	        return ResponseEntity.status(HttpStatus.CREATED).body("Usuario creado con éxito.");

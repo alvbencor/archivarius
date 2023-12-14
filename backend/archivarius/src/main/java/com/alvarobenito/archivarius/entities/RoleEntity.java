@@ -43,4 +43,8 @@ public class RoleEntity {
     @JsonIgnore  // Evita la serialización de la propiedad users
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
     private Set<UserEntity> users = new HashSet<>();
+    
+    public RoleEntity(EnumRole name) {
+        this.name = name;
+    }
 }
