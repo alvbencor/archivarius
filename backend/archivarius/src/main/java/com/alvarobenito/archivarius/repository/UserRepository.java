@@ -7,6 +7,7 @@ import com.alvarobenito.archivarius.entities.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-	
+
+	boolean existsByUsernameOrEmail(String username, String email);
 
 }

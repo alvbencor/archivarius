@@ -1,12 +1,15 @@
 package com.alvarobenito.archivarius.repository;
 
-import java.util.Optional;
-
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.alvarobenito.archivarius.entities.RoleEntity;
+import com.alvarobenito.archivarius.utils.EnumRole;
 
-public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
+@Repository
+public interface RoleRepository extends CrudRepository<RoleEntity, Long> {
+	
+	RoleEntity findByName(EnumRole roleName);
 	
 
 }
