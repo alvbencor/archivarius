@@ -21,7 +21,7 @@ public class AdminService {
 	public void saveUser(UserEntity user) {
 	    try {
 	        userRepository.save(user);
-	        System.out.println("User ID after save: " + user.getId());
+
 	        System.out.println("User saved successfully.");
 	    } catch (Exception e) {
 	        System.err.println("Error saving user: " + e.getMessage());

@@ -22,13 +22,13 @@ import com.alvarobenito.archivarius.service.UserService;
 import com.alvarobenito.archivarius.utils.EnumRole;
 
 @RestController
-@RequestMapping("/archivarius/v1/users")
+@RequestMapping("/archivarius/v1/")
 public class UserRestController {
 	
 	@Autowired UserService userService;
 	@Autowired RoleService roleService;
 	
-	@PostMapping("/create")
+	@PostMapping("/users")
 	public ResponseEntity<String> createUser(@RequestBody UserEntity createUserRequest) {
 	    try {
 	        if (userService.existsByUsernameOrEmail(createUserRequest.getUsername(), createUserRequest.getEmail())) {
@@ -66,6 +66,8 @@ public class UserRestController {
 	                .body("Error al crear el usuario: " + e.getMessage());
 	    }
 	}
+	
+	
 	
 
 }
